@@ -1,0 +1,163 @@
+import type { Curso, FiltrosCurso } from '../types/curso';
+
+/**
+ * Dados mockados de cursos focados no futuro do trabalho
+ */
+const cursosMock: Curso[] = [
+  {
+    id: '1',
+    titulo: 'IA como Parceira: Fundamentos e Aplicações',
+    descricao: 'Aprenda a trabalhar com IA como aliada no dia a dia profissional',
+    descricaoCompleta: 'Descubra como a Inteligência Artificial pode ser sua parceira no trabalho. Este curso ensina fundamentos de IA, ferramentas práticas e como integrar IA em diferentes profissões.',
+    categoria: 'ia-tecnologia',
+    nivel: 'iniciante',
+    duracao: '6 semanas',
+    preco: 0,
+    gratuito: true,
+    imagemUrl: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800',
+    instrutor: 'Dr. Ana Silva',
+    avaliacoes: 4.8,
+    numeroAlunos: 1250,
+    competencias: ['Prompt Engineering', 'Automação', 'Pensamento Crítico'],
+    futuroTrabalho: ['IA Generativa', 'Automação Inteligente']
+  },
+  {
+    id: '2',
+    titulo: 'Bem-Estar e Produtividade no Trabalho Híbrido',
+    descricao: 'Estratégias para manter saúde mental e física em ambientes híbridos',
+    descricaoCompleta: 'Aprenda técnicas comprovadas para equilibrar vida pessoal e profissional, gerenciar estresse e manter alta produtividade em modelos de trabalho híbrido e remoto.',
+    categoria: 'saude-bem-estar',
+    nivel: 'iniciante',
+    duracao: '4 semanas',
+    preco: 0,
+    gratuito: true,
+    imagemUrl: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800',
+    instrutor: 'Dra. Mariana Costa',
+    avaliacoes: 4.9,
+    numeroAlunos: 2100,
+    competencias: ['Gestão de Tempo', 'Mindfulness', 'Ergonomia'],
+    futuroTrabalho: ['Trabalho Híbrido', 'Saúde Mental']
+  },
+  {
+    id: '3',
+    titulo: 'Economia Verde: Carreiras Sustentáveis',
+    descricao: 'Explore profissões emergentes na economia verde e sustentável',
+    descricaoCompleta: 'Conheça as carreiras do futuro na economia verde, desde energia renovável até economia circular. Prepare-se para profissões que ainda estão sendo criadas.',
+    categoria: 'sustentabilidade',
+    nivel: 'intermediario',
+    duracao: '8 semanas',
+    preco: 297,
+    gratuito: false,
+    imagemUrl: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800',
+    instrutor: 'Prof. Carlos Mendes',
+    avaliacoes: 4.7,
+    numeroAlunos: 850,
+    competencias: ['ESG', 'Sustentabilidade', 'Inovação Verde'],
+    futuroTrabalho: ['Economia Circular', 'Energia Renovável']
+  },
+  {
+    id: '4',
+    titulo: 'Reskilling: Reinventando sua Carreira',
+    descricao: 'Metodologias para requalificação profissional contínua',
+    descricaoCompleta: 'Aprenda estratégias de reskilling e upskilling para se manter relevante no mercado. Descubra como identificar gaps de competências e criar seu plano de desenvolvimento.',
+    categoria: 'soft-skills',
+    nivel: 'iniciante',
+    duracao: '5 semanas',
+    preco: 0,
+    gratuito: true,
+    imagemUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800',
+    instrutor: 'Paula Oliveira',
+    avaliacoes: 4.6,
+    numeroAlunos: 1680,
+    competencias: ['Aprendizagem Contínua', 'Autogestão', 'Adaptabilidade'],
+    futuroTrabalho: ['Lifelong Learning', 'Carreira Líquida']
+  },
+  {
+    id: '5',
+    titulo: 'Ambientes Imersivos: XR no Trabalho',
+    descricao: 'Realidade Virtual e Aumentada aplicadas ao ambiente profissional',
+    descricaoCompleta: 'Explore como VR, AR e metaverso estão transformando ambientes de trabalho. Aprenda a criar experiências imersivas e colaborar em espaços virtuais.',
+    categoria: 'ambientes-hibridos',
+    nivel: 'avancado',
+    duracao: '10 semanas',
+    preco: 497,
+    gratuito: false,
+    imagemUrl: 'https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=800',
+    instrutor: 'Dr. Roberto Lima',
+    avaliacoes: 4.9,
+    numeroAlunos: 420,
+    competencias: ['XR Design', 'Colaboração Virtual', 'Unity/Unreal'],
+    futuroTrabalho: ['Metaverso', 'Trabalho Imersivo']
+  },
+  {
+    id: '6',
+    titulo: 'Inclusão Produtiva e Diversidade',
+    descricao: 'Construindo ambientes de trabalho inclusivos e diversos',
+    descricaoCompleta: 'Aprenda estratégias práticas para promover inclusão, equidade e diversidade no ambiente de trabalho. Entenda como criar oportunidades para todos.',
+    categoria: 'inclusao-diversidade',
+    nivel: 'intermediario',
+    duracao: '6 semanas',
+    preco: 197,
+    gratuito: false,
+    imagemUrl: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800',
+    instrutor: 'Dra. Juliana Santos',
+    avaliacoes: 4.8,
+    numeroAlunos: 950,
+    competencias: ['DEI', 'Liderança Inclusiva', 'Acessibilidade'],
+    futuroTrabalho: ['Inclusão Digital', 'Equidade']
+  }
+];
+
+/**
+ * Serviço para gerenciar cursos
+ */
+export const cursoService = {
+  /**
+   * Busca todos os cursos com filtros opcionais
+   */
+  buscarCursos: async (filtros?: FiltrosCurso): Promise<Curso[]> => {
+    // Simula delay de API
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
+    let resultado = [...cursosMock];
+    
+    if (filtros?.categoria) {
+      resultado = resultado.filter(c => c.categoria === filtros.categoria);
+    }
+    
+    if (filtros?.nivel) {
+      resultado = resultado.filter(c => c.nivel === filtros.nivel);
+    }
+    
+    if (filtros?.gratuito !== undefined) {
+      resultado = resultado.filter(c => c.gratuito === filtros.gratuito);
+    }
+    
+    if (filtros?.busca) {
+      const busca = filtros.busca.toLowerCase();
+      resultado = resultado.filter(c => 
+        c.titulo.toLowerCase().includes(busca) ||
+        c.descricao.toLowerCase().includes(busca) ||
+        c.competencias.some(comp => comp.toLowerCase().includes(busca))
+      );
+    }
+    
+    return resultado;
+  },
+
+  /**
+   * Busca curso por ID
+   */
+  buscarCursoPorId: async (id: string): Promise<Curso | null> => {
+    await new Promise(resolve => setTimeout(resolve, 200));
+    return cursosMock.find(c => c.id === id) || null;
+  },
+
+  /**
+   * Busca cursos gratuitos em destaque
+   */
+  buscarCursosGratuitos: async (): Promise<Curso[]> => {
+    await new Promise(resolve => setTimeout(resolve, 200));
+    return cursosMock.filter(c => c.gratuito).slice(0, 3);
+  }
+};
