@@ -54,7 +54,11 @@ Para facilitar o trabalho com Git e GitFlow, use os scripts:
 - **`fazer-commits.bat`** - Menu interativo para múltiplos commits
 - **`gitflow-commits.bat`** - GitFlow completo (features, releases, tags)
 
-📖 **Veja o guia completo**: [COMO_USAR_SCRIPTS.md](COMO_USAR_SCRIPTS.md)
+📖 **Documentação**:
+- [🚀 Guia Rápido](GUIA_RAPIDO.md) - Comece aqui!
+- [📘 Como Usar Scripts](COMO_USAR_SCRIPTS.md) - Guia completo
+- [💡 Exemplos de Uso](EXEMPLOS_USO.md) - Cenários práticos
+- [🌿 GitFlow Resumo](GITFLOW_RESUMO.md) - Implementação GitFlow
 
 ## 👥 Equipe
 - Leonardo Sabbatini - leonardoherrerasabbatini@gmail.com
