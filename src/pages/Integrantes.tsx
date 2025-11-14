@@ -11,10 +11,10 @@ interface Integrante {
 
 const integrantes: Integrante[] = [
   {
-    nome: 'Nome do Integrante 1',
-    rm: 'RM12345',
-    turma: '1TDSPX',
-    foto: '/public/joao.jpg',
+    nome: 'João Victor Veronesi',
+    rm: 'RM565290',
+    turma: '1TDSPI',
+    foto: '/joao.jpg',
     github: 'https://github.com/Veronesi30',
     linkedin: 'www.linkedin.com/in/jo%C3%A3o-victor-veronesi-734897276/'
   },
@@ -22,7 +22,7 @@ const integrantes: Integrante[] = [
     nome: 'Rafael de Freitas Moraes',
     rm: 'RM563210',
     turma: '1TDSPI',
-    foto: '/public/rafael.jpg',
+    foto: '/rafael.jpg',
     github: 'https://github.com/devfreitas',
     linkedin: 'https://www.linkedin.com/in/rafael-freitas-9345492b5/'
   },
@@ -30,7 +30,7 @@ const integrantes: Integrante[] = [
     nome: 'Leonardo Herrera Sabbatini',
     rm: 'RM12347',
     turma: '1TDSPI',
-    foto: '/public/leonardo.jpg',
+    foto: '/leonardo.jpg',
     github: 'https://github.com/LeoSabbatini',
     linkedin: 'https://www.linkedin.com/in/devsabbatini/'
   }

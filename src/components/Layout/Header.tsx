@@ -19,7 +19,7 @@ export function Header() {
             <div className="relative w-10 h-10 sm:w-12 sm:h-12">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl rotate-6 group-hover:rotate-12 transition-transform duration-300"></div>
               <div className="relative w-full h-full bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300">
-                <span className="text-white font-bold text-xl sm:text-2xl">S</span>
+                <span className="text-white font-bold text-xl sm:text-2xl">SK</span>
               </div>
             </div>
             <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 text-transparent bg-clip-text hidden xs:inline">
