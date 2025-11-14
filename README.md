@@ -257,7 +257,7 @@ Curso: Análise e Desenvolvimento de Sistemas
 Equipe: **404-Not-Founders** - Turma: **1TDSPI**
 
 ## Links
-- **Repositório:** [https://github.com/Not-Founders/sprint4_front](https://github.com/devfreitas/gs2-front)
+- **Repositório:** https://github.com/devfreitas/gs2-front
 - **Vídeo:** https://youtu.be/0ytAkKU40S8
 - **Vercel** https://global2-front-n8or.vercel.app/
 
@@ -281,5 +281,6 @@ Contribuições são bem-vindas! Para contribuir:
 ---
 
 Desenvolvido pela equipe Not-Founders | © 2025 Todos os direitos reservados.
+
 
 
