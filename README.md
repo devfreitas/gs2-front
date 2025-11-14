@@ -39,11 +39,22 @@ npm run dev
 
 ## 🛠️ Scripts Disponíveis
 
+### NPM Scripts
 - `npm run dev` - Inicia o servidor de desenvolvimento
 - `npm run build` - Cria a build de produção
 - `npm run preview` - Visualiza a build de produção
 - `npm run lint` - Executa o linter
 - `npm run test` - Executa os testes
+
+### Scripts Git (.bat)
+Para facilitar o trabalho com Git e GitFlow, use os scripts:
+
+- **`commit.bat`** - Commit super rápido (escolhe autor e commita)
+- **`commit-rapido.bat`** - Commit com tipo (feat, fix, docs, etc)
+- **`fazer-commits.bat`** - Menu interativo para múltiplos commits
+- **`gitflow-commits.bat`** - GitFlow completo (features, releases, tags)
+
+📖 **Veja o guia completo**: [COMO_USAR_SCRIPTS.md](COMO_USAR_SCRIPTS.md)
 
 ## 👥 Equipe
 - Leonardo Sabbatini - leonardoherrerasabbatini@gmail.com
