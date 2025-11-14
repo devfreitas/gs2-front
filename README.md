@@ -1,5 +1,7 @@
 # SkillHub - Plataforma de Cursos Online
 
+![React](https://img.shields.io/badge/React-19-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue) ![Tailwind](https://img.shields.io/badge/Tailwind-4.1-blue)
+
 ## 📚 Sobre o Projeto
 SkillHub é uma plataforma moderna de cursos online desenvolvida com React, TypeScript e Tailwind CSS.
 
@@ -25,6 +27,15 @@ npm install
 # Execute o projeto
 npm run dev
 ```
+
+## ✨ Funcionalidades
+
+- 🎨 Sistema de temas (claro/escuro)
+- 🔐 Autenticação de usuários
+- 📚 Catálogo de cursos
+- 💳 Sistema de checkout
+- 📱 Design responsivo
+- 🔔 Sistema de notificações
 
 ## 👥 Equipe
 - Leonardo Sabbatini
