@@ -37,7 +37,18 @@ npm run dev
 - 📱 Design responsivo
 - 🔔 Sistema de notificações
 
+## 🛠️ Scripts Disponíveis
+
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Cria a build de produção
+- `npm run preview` - Visualiza a build de produção
+- `npm run lint` - Executa o linter
+- `npm run test` - Executa os testes
+
 ## 👥 Equipe
-- Leonardo Sabbatini
-- João Veronesi  
-- Rafael Freitas
+- Leonardo Sabbatini - leonardoherrerasabbatini@gmail.com
+- João Veronesi - jvveronesi30@gmail.com
+- Rafael Freitas - freitassrafa2006@gmail.com
+
+## 📄 Licença
+Este projeto foi desenvolvido para fins acadêmicos.
