@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import { ThemeToggleCompact } from '../ui/ThemeToggleCompact';
 
 export function Header() {
@@ -8,7 +8,7 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg border-b border-gray-200 dark:border-gray-800 transition-all duration-200">
+    <header className="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-md border-b border-gray-200 dark:border-slate-700 transition-all duration-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -29,31 +29,31 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-            <Link to="/" className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-all">
+            <Link to="/" className="px-3 py-2 text-sm font-medium text-gray-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-all">
               Home
             </Link>
-            <Link to="/sobre" className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-all">
+            <Link to="/sobre" className="px-3 py-2 text-sm font-medium text-gray-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-all">
               Sobre
             </Link>
-            <Link to="/faq" className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-all">
+            <Link to="/faq" className="px-3 py-2 text-sm font-medium text-gray-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-all">
               FAQ
             </Link>
-            <Link to="/contato" className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-all">
+            <Link to="/contato" className="px-3 py-2 text-sm font-medium text-gray-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-all">
               Contato
             </Link>
-            <Link to="/integrantes" className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-all">
+            <Link to="/integrantes" className="px-3 py-2 text-sm font-medium text-gray-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-all">
               Integrantes
             </Link>
-            <div className="w-px h-6 bg-gray-300 dark:bg-gray-700 mx-2" />
-            <Link to="/cursos" className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-all">
+            <div className="w-px h-6 bg-gray-300 dark:bg-slate-600 mx-2" />
+            <Link to="/cursos" className="px-3 py-2 text-sm font-medium text-gray-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-all">
               Cursos
             </Link>
             {isAuthenticated && (
-              <Link to="/dashboard" className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-all">
+              <Link to="/dashboard" className="px-3 py-2 text-sm font-medium text-gray-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-all">
                 Dashboard
               </Link>
             )}
-            <Link to="/admin" className="px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-all">
+            <Link to="/admin" className="px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-all">
               Admin
             </Link>
           </nav>
@@ -63,22 +63,22 @@ export function Header() {
             <ThemeToggleCompact />
             {isAuthenticated && user ? (
               <div className="flex items-center space-x-3">
-                <span className="text-sm text-gray-700 dark:text-gray-300 hidden xl:inline">
+                <span className="text-sm font-medium text-gray-900 dark:text-slate-200 hidden xl:inline">
                   Olá, {user.nomeCompleto}
                 </span>
                 <button
                   onClick={logout}
-                  className="px-4 py-2 text-sm font-medium bg-red-500 hover:bg-red-600 text-white rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm hover:shadow-md"
+                  className="px-4 py-2 text-sm font-semibold bg-red-600 hover:bg-red-700 active:bg-red-800 text-white rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm hover:shadow-md"
                 >
                   Sair
                 </button>
               </div>
             ) : (
               <div className="flex items-center space-x-2">
-                <Link to="/login" className="px-4 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:bg-blue-50 dark:hover:bg-gray-800 rounded-lg transition-all">
+                <Link to="/login" className="px-4 py-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-lg transition-all">
                   Entrar
                 </Link>
-                <Link to="/cadastro" className="px-4 py-2 text-sm font-medium bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm hover:shadow-md">
+                <Link to="/cadastro" className="px-4 py-2 text-sm font-semibold bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm hover:shadow-md">
                   Cadastrar
                 </Link>
               </div>

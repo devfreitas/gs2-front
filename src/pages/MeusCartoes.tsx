@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Layout } from '../components/Layout/Layout';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
-import { useNotification } from '../contexts/NotificationContext';
+import { useNotification } from '../hooks/useNotification';
 import type { CartaoCredito } from '../types/pagamento';
 import { cartaoService } from '../services/cartaoService';
 import { mascaraCartao, identificarBandeira } from '../utils/cartaoValidators';
@@ -15,21 +15,22 @@ export function MeusCartoes() {
   const [loading, setLoading] = useState(true);
   const { success, error: showError } = useNotification();
 
-  useEffect(() => {
-    carregarCartoes();
-  }, []);
-
   const carregarCartoes = async () => {
     setLoading(true);
     try {
       const dados = await cartaoService.listarCartoes();
       setCartoes(dados);
-    } catch (err) {
+    } catch {
       showError('Erro ao carregar cartões');
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    carregarCartoes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleExcluir = async (id: number) => {
     if (!confirm('Deseja realmente excluir este cartão?')) {
@@ -40,7 +41,7 @@ export function MeusCartoes() {
       await cartaoService.excluirCartao(id);
       success('Cartão excluído com sucesso');
       carregarCartoes();
-    } catch (err) {
+    } catch {
       showError('Erro ao excluir cartão');
     }
   };

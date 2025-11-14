@@ -7,7 +7,7 @@ export function LandingPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+    <div className="min-h-screen flex flex-col">
       <Header />
 
       {/* Hero Section - Modernizado */}
@@ -37,7 +37,7 @@ export function LandingPage() {
           </h1>
 
           {/* Subtítulo */}
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-700 dark:text-slate-200 max-w-3xl mx-auto leading-relaxed">
             Desenvolva competências para profissões que ainda não existem. 
             Aprenda sobre <span className="font-semibold text-blue-600 dark:text-blue-400">IA</span>, 
             <span className="font-semibold text-green-600 dark:text-green-400"> sustentabilidade</span> e 
@@ -70,7 +70,7 @@ export function LandingPage() {
           </div>
 
           {/* Social Proof */}
-          <div className="flex items-center justify-center gap-8 pt-8 text-sm text-gray-600 dark:text-gray-400">
+          <div className="flex items-center justify-center gap-8 pt-8 text-sm text-gray-700 dark:text-slate-300">
             <div className="flex items-center gap-2">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
@@ -99,7 +99,7 @@ export function LandingPage() {
             { number: '7.250+', label: 'Alunos Ativos', icon: '👥', color: 'purple' },
             { number: '3', label: 'Cursos Gratuitos', icon: '🎁', color: 'green' }
           ].map((stat, idx) => (
-            <div key={idx} className="group relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transform hover:-translate-y-2">
+            <div key={idx} className="group relative bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400 transform hover:-translate-y-2">
               <div className="text-5xl mb-4">{stat.icon}</div>
               <div className={`text-5xl font-bold bg-gradient-to-r ${
                 stat.color === 'blue' ? 'from-blue-600 to-cyan-600' :
@@ -108,20 +108,20 @@ export function LandingPage() {
               } text-transparent bg-clip-text mb-2`}>
                 {stat.number}
               </div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">{stat.label}</div>
+              <div className="text-gray-700 dark:text-slate-200 font-medium">{stat.label}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Features Section - Modernizado */}
-      <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 py-24">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               Por que escolher o SkillHub?
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-slate-300 max-w-2xl mx-auto">
               A plataforma completa para sua evolução profissional
             </p>
           </div>
@@ -147,7 +147,7 @@ export function LandingPage() {
                 gradient: 'from-green-500 to-emerald-500'
               }
             ].map((feature, idx) => (
-              <div key={idx} className="group relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
+              <div key={idx} className="group relative bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-slate-600 overflow-hidden">
                 {/* Gradient overlay on hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
                 
@@ -158,7 +158,7 @@ export function LandingPage() {
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <p className="text-gray-700 dark:text-slate-200 leading-relaxed">
                     {feature.desc}
                   </p>
                 </div>
@@ -174,7 +174,7 @@ export function LandingPage() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Temas que Você Vai Explorar
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-xl text-gray-700 dark:text-slate-200">
             Prepare-se para as profissões do amanhã
           </p>
         </div>
@@ -188,12 +188,12 @@ export function LandingPage() {
             { icon: '🥽', titulo: 'Ambientes Imersivos', desc: 'VR/AR no ambiente de trabalho', color: 'indigo' },
             { icon: '🤝', titulo: 'Inclusão', desc: 'Diversidade e inclusão produtiva', color: 'orange' }
           ].map((tema, idx) => (
-            <div key={idx} className="group relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transform hover:-translate-y-1 cursor-pointer">
+            <div key={idx} className="group relative bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400 transform hover:-translate-y-1 cursor-pointer">
               <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{tema.icon}</div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 {tema.titulo}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-gray-700 dark:text-slate-200 text-sm">
                 {tema.desc}
               </p>
               
@@ -209,7 +209,7 @@ export function LandingPage() {
       </section>
 
       {/* CTA Section - Modernizado */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 py-24">
+      <section className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-800 dark:via-purple-800 dark:to-pink-800 py-24">
         {/* Pattern overlay */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>

@@ -4,7 +4,7 @@ import { Layout } from '../components/Layout/Layout';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
-import { useNotification } from '../contexts/NotificationContext';
+import { useNotification } from '../hooks/useNotification';
 import type { Curso } from '../types/curso';
 import type { CartaoCredito } from '../types/pagamento';
 import { cursoService } from '../services/cursoService';
@@ -50,10 +50,6 @@ export function Checkout() {
 
   const [errosCartao, setErrosCartao] = useState<Partial<Record<keyof CartaoCredito, string>>>({});
 
-  useEffect(() => {
-    carregarCurso();
-  }, [cursoId]);
-
   const carregarCurso = async () => {
     if (!cursoId) {
       showError('Curso não encontrado');
@@ -69,13 +65,18 @@ export function Checkout() {
         return;
       }
       setCurso(cursoData);
-    } catch (err) {
+    } catch {
       showError('Erro ao carregar curso');
       navigate('/cursos');
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    carregarCurso();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const gerarQRCodePix = () => {
     // Gera um QR Code aleatório (não funcional)
@@ -130,7 +131,7 @@ export function Checkout() {
         success('Pagamento confirmado! Você já pode acessar o curso.');
         navigate('/dashboard');
       }, 3000);
-    } catch (err) {
+    } catch {
       showError('Erro ao processar pagamento PIX');
     } finally {
       setProcessando(false);
@@ -149,7 +150,7 @@ export function Checkout() {
       
       success('Pagamento aprovado! Você já pode acessar o curso.');
       navigate('/dashboard');
-    } catch (err) {
+    } catch {
       showError('Erro ao processar pagamento com cartão');
     } finally {
       setProcessando(false);

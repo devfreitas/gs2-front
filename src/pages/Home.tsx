@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { useNotification } from '../contexts/NotificationContext';
+import { useAuth } from '../hooks/useAuth';
+import { useNotification } from '../hooks/useNotification';
 import { Layout } from '../components/Layout/Layout';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
@@ -25,43 +25,43 @@ export function Home() {
     <Layout>
       <div className="space-y-8">
         {/* Seção de boas-vindas */}
-        <div className="bg-linear-to-r from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-700 rounded-lg shadow-lg p-8 text-white">
-          <h1 className="text-4xl font-bold mb-2">
+        <div className="bg-gradient-to-r from-blue-600 via-blue-600 to-purple-600 dark:from-blue-700 dark:via-blue-800 dark:to-purple-800 rounded-xl shadow-xl p-8 md:p-10 text-white">
+          <h1 className="text-3xl md:text-4xl font-bold mb-3">
             Bem-vindo, {user?.nomeCompleto}!
           </h1>
-          <p className="text-blue-100 text-lg">
+          <p className="text-blue-50 dark:text-blue-100 text-lg md:text-xl font-medium">
             Gerencie seus clientes e informações de forma simples e eficiente
           </p>
         </div>
 
         {/* Informações do usuário */}
         <Card variant="elevated">
-          <div className="space-y-4">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+          <div className="space-y-5">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">
               Suas Informações
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                <p className="text-sm font-bold text-gray-700 dark:text-slate-300 mb-1">
                   Nome Completo
                 </p>
-                <p className="text-lg text-gray-900 dark:text-white">
+                <p className="text-lg font-semibold text-gray-900 dark:text-slate-100">
                   {user?.nomeCompleto}
                 </p>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                <p className="text-sm font-bold text-gray-700 dark:text-slate-300 mb-1">
                   Email
                 </p>
-                <p className="text-lg text-gray-900 dark:text-white">
+                <p className="text-lg font-semibold text-gray-900 dark:text-slate-100">
                   {user?.emailCliente}
                 </p>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                <p className="text-sm font-bold text-gray-700 dark:text-slate-300 mb-1">
                   CPF
                 </p>
-                <p className="text-lg text-gray-900 dark:text-white">
+                <p className="text-lg font-semibold text-gray-900 dark:text-slate-100">
                   {user?.cpfNumero}
                 </p>
               </div>
@@ -71,18 +71,18 @@ export function Home() {
 
         {/* Cards de navegação */}
         <div>
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
             Acesso Rápido
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Card Meus Cursos */}
             <Card 
               variant="elevated" 
-              className="hover:shadow-xl transition-shadow"
+              className="hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
             >
               <div className="text-center space-y-4">
                 <div className="flex justify-center">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-full flex items-center justify-center">
                     <svg
                       className="w-8 h-8 text-blue-600 dark:text-blue-400"
                       fill="none"
@@ -99,10 +99,10 @@ export function Home() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-2">
                     Meus Cursos
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-gray-700 dark:text-slate-300 font-medium">
                     Acesse seus cursos e continue aprendendo
                   </p>
                 </div>
@@ -119,11 +119,11 @@ export function Home() {
             >
               <Card 
                 variant="elevated" 
-                className="hover:shadow-xl transition-shadow h-full"
+                className="hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full"
               >
                 <div className="text-center space-y-4">
                   <div className="flex justify-center">
-                    <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+                    <div className="w-16 h-16 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center">
                       <svg
                         className="w-8 h-8 text-green-600 dark:text-green-400"
                         fill="none"
@@ -140,10 +140,10 @@ export function Home() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-2">
                       Meus Cartões
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p className="text-gray-700 dark:text-slate-300 font-medium">
                       Gerencie seus cartões de crédito salvos
                     </p>
                   </div>
@@ -157,11 +157,11 @@ export function Home() {
             {/* Card Configurações */}
             <Card 
               variant="elevated" 
-              className="hover:shadow-xl transition-shadow"
+              className="hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
             >
               <div className="text-center space-y-4">
                 <div className="flex justify-center">
-                  <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/50 rounded-full flex items-center justify-center">
                     <svg
                       className="w-8 h-8 text-purple-600 dark:text-purple-400"
                       fill="none"
@@ -184,10 +184,10 @@ export function Home() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-2">
                     Configurações
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-gray-700 dark:text-slate-300 font-medium">
                     Personalize suas preferências e configurações
                   </p>
                 </div>

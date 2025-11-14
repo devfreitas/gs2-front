@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useNotification } from '../contexts/NotificationContext';
+import { useNotification } from '../hooks/useNotification';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { validateClienteForm } from '../utils/validators';
@@ -68,10 +68,10 @@ export function Cadastro() {
 
       // Redirecionar para login após sucesso
       navigate('/login');
-    } catch (error: any) {
+    } catch (error: unknown) {
       // Se for erro 500, o cadastro pode ter funcionado mesmo assim
       // Vamos redirecionar para o login
-      if (error?.status === 500) {
+      if (error && typeof error === 'object' && 'status' in error && error.status === 500) {
         console.warn('Erro 500, mas redirecionando para login');
         success('Cadastro realizado! Faça login para continuar.');
         navigate('/login');
@@ -90,17 +90,17 @@ export function Cadastro() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h2 className="text-center text-3xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-center text-3xl md:text-4xl font-bold text-gray-900 dark:text-slate-100">
             Criar nova conta
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
+          <p className="mt-3 text-center text-sm md:text-base text-gray-700 dark:text-slate-300 font-medium">
             Ou{' '}
             <Link
               to="/login"
-              className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
+              className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline"
             >
               faça login na sua conta existente
             </Link>
@@ -111,8 +111,8 @@ export function Cadastro() {
           <div className="space-y-4">
             {/* Mensagem de erro da API */}
             {apiError && (
-              <div className="rounded-lg bg-red-50 dark:bg-red-900/20 p-4">
-                <p className="text-sm text-red-800 dark:text-red-400">
+              <div className="rounded-lg bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 p-4">
+                <p className="text-sm font-semibold text-red-800 dark:text-red-300">
                   {apiError}
                 </p>
               </div>
@@ -201,11 +201,11 @@ export function Cadastro() {
 
         {/* Link para login */}
         <div className="text-center">
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm md:text-base text-gray-700 dark:text-slate-300 font-medium">
             Já tem uma conta?{' '}
             <Link
               to="/login"
-              className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
+              className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline"
             >
               Faça login aqui
             </Link>

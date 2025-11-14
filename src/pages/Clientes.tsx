@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNotification } from '../contexts/NotificationContext';
+import { useNotification } from '../hooks/useNotification';
 import { Layout } from '../components/Layout/Layout';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
@@ -48,6 +48,7 @@ export function Clientes() {
     }
 
     fetchClientes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Open edit modal with cliente data
@@ -106,7 +107,7 @@ export function Clientes() {
       const updatedCliente = await atualizarCliente(editFormData as ClienteUpdate);
       
       // Update cliente in the list
-      setClientes((prev) =>
+      setClientes((prev: Cliente[]) =>
         prev.map((c) => (c.id === updatedCliente.id ? updatedCliente : c))
       );
 

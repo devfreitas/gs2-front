@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
-import { useNotification } from '../contexts/NotificationContext';
+import { useNotification } from '../hooks/useNotification';
 
 /**
  * Página de Admin - Acesso simples com admin/admin
@@ -34,7 +34,7 @@ export function Admin() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-gray-900 to-gray-800 flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-4">
         <Card className="w-full max-w-md">
           <div className="space-y-6">
             <div className="text-center">
@@ -46,7 +46,7 @@ export function Admin() {
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                 Acesso Admin
               </h1>
-              <p className="text-gray-600 dark:text-gray-300 mt-2">
+              <p className="text-gray-600 dark:text-slate-300 mt-2">
                 Área restrita - Apenas administradores
               </p>
             </div>
@@ -100,11 +100,11 @@ export function Admin() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen">
       {/* Header Admin */}
-      <header className="bg-white dark:bg-gray-800 shadow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+      <header className="bg-white dark:bg-slate-900 shadow-md border-b border-gray-200 dark:border-slate-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-slate-100">
             Painel Admin
           </h1>
           <Button variant="danger" onClick={handleLogout}>
@@ -118,35 +118,35 @@ export function Admin() {
         <div className="space-y-8">
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <Card>
+            <Card variant="elevated">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">6</div>
-                <div className="text-gray-600 dark:text-gray-300 mt-1">Cursos</div>
+                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400">6</div>
+                <div className="text-gray-900 dark:text-slate-200 mt-2 font-semibold">Cursos</div>
               </div>
             </Card>
-            <Card>
+            <Card variant="elevated">
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 dark:text-green-400">7.250</div>
-                <div className="text-gray-600 dark:text-gray-300 mt-1">Alunos</div>
+                <div className="text-4xl font-bold text-green-600 dark:text-green-400">7.250</div>
+                <div className="text-gray-900 dark:text-slate-200 mt-2 font-semibold">Alunos</div>
               </div>
             </Card>
-            <Card>
+            <Card variant="elevated">
               <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">3</div>
-                <div className="text-gray-600 dark:text-gray-300 mt-1">Gratuitos</div>
+                <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">3</div>
+                <div className="text-gray-900 dark:text-slate-200 mt-2 font-semibold">Gratuitos</div>
               </div>
             </Card>
-            <Card>
+            <Card variant="elevated">
               <div className="text-center">
-                <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">4.8</div>
-                <div className="text-gray-600 dark:text-gray-300 mt-1">Avaliação</div>
+                <div className="text-4xl font-bold text-orange-600 dark:text-orange-400">4.8</div>
+                <div className="text-gray-900 dark:text-slate-200 mt-2 font-semibold">Avaliação</div>
               </div>
             </Card>
           </div>
 
           {/* Ações Rápidas */}
-          <Card>
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+          <Card variant="elevated">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-4">
               Ações Rápidas
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -183,14 +183,20 @@ export function Admin() {
           </Card>
 
           {/* Informações */}
-          <Card>
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+          <Card variant="elevated">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-4">
               Informações do Sistema
             </h2>
-            <div className="space-y-2 text-gray-600 dark:text-gray-300">
-              <p>✅ Sistema operacional</p>
-              <p>✅ Banco de dados conectado</p>
-              <p>✅ Todos os serviços ativos</p>
+            <div className="space-y-3 text-gray-900 dark:text-slate-200 font-medium">
+              <p className="flex items-center gap-2">
+                <span className="text-green-500">✅</span> Sistema operacional
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="text-green-500">✅</span> Banco de dados conectado
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="text-green-500">✅</span> Todos os serviços ativos
+              </p>
             </div>
           </Card>
         </div>

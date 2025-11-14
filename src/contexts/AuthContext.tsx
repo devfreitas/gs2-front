@@ -1,10 +1,11 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import type { AuthContextType } from '../types/auth.types';
 import type { Cliente } from '../types/cliente.types';
 import { listarClientes } from '../services/clienteService';
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+// eslint-disable-next-line react-refresh/only-export-components
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const AUTH_STORAGE_KEY = 'auth_user';
 
@@ -48,8 +49,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       setUser(clienteEncontrado);
       localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(clienteEncontrado));
-    } catch (error) {
-      throw error;
     } finally {
       setLoading(false);
     }
@@ -69,14 +68,4 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
-
-export function useAuth(): AuthContextType {
-  const context = useContext(AuthContext);
-  
-  if (context === undefined) {
-    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
-  }
-  
-  return context;
 }

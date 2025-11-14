@@ -8,12 +8,12 @@ const API_BASE_URL = 'https://gs-java-5srd.onrender.com/main';
  */
 export class ApiError extends Error {
   status: number;
-  originalError?: any;
+  originalError?: unknown;
 
   constructor(
     message: string,
     status: number,
-    originalError?: any
+    originalError?: unknown
   ) {
     super(message);
     this.name = 'ApiError';

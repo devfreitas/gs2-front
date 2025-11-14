@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Layout } from '../components/Layout/Layout';
-import { useNotification } from '../contexts/NotificationContext';
+import { useNotification } from '../hooks/useNotification';
 
 export function Contato() {
   const { success, error } = useNotification();

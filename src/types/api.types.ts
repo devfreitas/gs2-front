@@ -1,7 +1,7 @@
 /**
  * Resposta de sucesso genérica da API
  */
-export interface ApiSuccessResponse<T = any> {
+export interface ApiSuccessResponse<T = unknown> {
   data?: T;
   message: string;
 }
@@ -23,7 +23,7 @@ export type ApiResponse<T> = ApiSuccessResponse<T> | ApiErrorResponse;
 /**
  * Type guard para verificar se a resposta é um erro
  */
-export function isApiError(response: ApiResponse<any>): response is ApiErrorResponse {
+export function isApiError(response: ApiResponse<unknown>): response is ApiErrorResponse {
   return 'error' in response;
 }
 

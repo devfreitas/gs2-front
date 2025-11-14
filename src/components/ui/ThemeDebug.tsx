@@ -1,4 +1,4 @@
-import { useTheme } from '../../contexts/ThemeContext';
+import { useTheme } from '../../hooks/useTheme';
 import { useEffect, useState } from 'react';
 
 export function ThemeDebug() {

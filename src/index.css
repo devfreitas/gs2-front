@@ -1,19 +1,11 @@
 @import "tailwindcss";
 
-/* Configuração do dark mode para Tailwind v4 */
-@variant dark (.dark &);
-
-/* Dark mode base */
-.dark {
-  color-scheme: dark;
+/* Garantir que elementos herdem as cores do body */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-.dark body {
-  background-color: #111827;
-  color: #f9fafb;
-}
-
-/* Animações customizadas */
+/* Animação de gradiente */
 @keyframes gradient {
   0%, 100% {
     background-position: 0% 50%;
@@ -28,14 +20,3 @@
   animation: gradient 3s ease infinite;
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Transições suaves globais */
-* {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
-}

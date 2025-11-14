@@ -1,8 +1,9 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useState, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import type { NotificationContextType, Notification, NotificationType } from '../types/notification.types';
 
-const NotificationContext = createContext<NotificationContextType | undefined>(undefined);
+// eslint-disable-next-line react-refresh/only-export-components
+export const NotificationContext = createContext<NotificationContextType | undefined>(undefined);
 
 interface NotificationProviderProps {
   children: ReactNode;
@@ -12,6 +13,10 @@ const DEFAULT_DURATION = 5000;
 
 export function NotificationProvider({ children }: NotificationProviderProps) {
   const [notifications, setNotifications] = useState<Notification[]>([]);
+
+  const removeNotification = useCallback((id: string): void => {
+    setNotifications((prev) => prev.filter((notification) => notification.id !== id));
+  }, []);
 
   const addNotification = useCallback(
     (type: NotificationType, message: string, duration: number = DEFAULT_DURATION): void => {
@@ -31,12 +36,8 @@ export function NotificationProvider({ children }: NotificationProviderProps) {
         }, duration);
       }
     },
-    []
+    [removeNotification]
   );
-
-  const removeNotification = useCallback((id: string): void => {
-    setNotifications((prev) => prev.filter((notification) => notification.id !== id));
-  }, []);
 
   const success = useCallback(
     (message: string, duration?: number): void => {
@@ -81,14 +82,4 @@ export function NotificationProvider({ children }: NotificationProviderProps) {
       {children}
     </NotificationContext.Provider>
   );
-}
-
-export function useNotification(): NotificationContextType {
-  const context = useContext(NotificationContext);
-
-  if (context === undefined) {
-    throw new Error('useNotification deve ser usado dentro de um NotificationProvider');
-  }
-
-  return context;
 }

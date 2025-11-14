@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 
 type Theme = 'light' | 'dark' | 'system';
@@ -9,7 +9,8 @@ interface ThemeContextType {
   effectiveTheme: 'light' | 'dark';
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+// eslint-disable-next-line react-refresh/only-export-components
+export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
@@ -43,18 +44,32 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       // Remove TODAS as classes primeiro
       root.classList.remove('light', 'dark');
       
-      // Adiciona a classe do tema
-      root.classList.add(appliedTheme);
+      // IMPORTANTE: Só adiciona a classe 'dark' quando for tema escuro
+      if (appliedTheme === 'dark') {
+        root.classList.add('dark');
+      }
       
-      // Remove estilos inline para deixar o Tailwind funcionar
-      body.style.backgroundColor = '';
-      body.style.color = '';
+      // Aplica cores diretamente via inline styles para garantir que funcione
+      if (appliedTheme === 'dark') {
+        // Tema Escuro Moderno: Azul escuro profundo com texto claro suave
+        body.style.backgroundColor = '#0f172a'; // slate-900 - Azul escuro profundo
+        body.style.color = '#f1f5f9'; // slate-100 - Texto claro suave
+      } else {
+        // Tema Claro Moderno: Branco puro com texto escuro rico
+        body.style.backgroundColor = '#ffffff'; // white - Branco puro
+        body.style.color = '#0f172a'; // slate-900 - Texto escuro rico
+      }
+      
+      body.style.transition = 'background-color 0.3s, color 0.3s';
+      body.style.minHeight = '100vh';
       
       // Define o color-scheme para o navegador
       root.style.colorScheme = appliedTheme;
       
       console.log('🎨 Classe HTML agora:', root.className);
       console.log('🎨 Tema aplicado:', appliedTheme === 'light' ? '☀️ CLARO' : '🌙 ESCURO');
+      console.log('🎨 Cor de fundo:', body.style.backgroundColor);
+      console.log('🎨 Cor do texto:', body.style.color);
       
       localStorage.setItem('theme', currentTheme);
     };
@@ -81,12 +96,4 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       {children}
     </ThemeContext.Provider>
   );
-}
-
-export function useTheme() {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error('useTheme deve ser usado dentro de um ThemeProvider');
-  }
-  return context;
 }
