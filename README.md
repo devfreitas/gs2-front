@@ -10,6 +10,22 @@ SkillHub é uma plataforma moderna de cursos online desenvolvida com React, Type
 - Vite
 - React Router DOM
 
+## 📦 Instalação
+
+```bash
+# Clone o repositório
+git clone https://github.com/devfreitas/Global2-front.git
+
+# Entre no diretório
+cd Global2-front
+
+# Instale as dependências
+npm install
+
+# Execute o projeto
+npm run dev
+```
+
 ## 👥 Equipe
 - Leonardo Sabbatini
 - João Veronesi  
