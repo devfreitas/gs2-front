@@ -258,7 +258,7 @@ Equipe: **404-Not-Founders** - Turma: **1TDSPI**
 
 ## Links
 - **Repositório:** https://github.com/devfreitas/gs2-front
-- **Vídeo:** https://youtu.be/T2Q5POewGLY
+- **Vídeo:** https://youtu.be/BwtfrZuz4NY
 - **Vercel** https://global2-front-n8or.vercel.app/
 
 ### Reportar Problemas
@@ -281,6 +281,7 @@ Contribuições são bem-vindas! Para contribuir:
 ---
 
 Desenvolvido pela equipe Not-Founders | © 2025 Todos os direitos reservados.
+
 
 
 
